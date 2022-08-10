@@ -2,6 +2,8 @@ package com.example.notification.model;
 
 import com.example.notification.type.NotificationReason;
 
+import java.util.Properties;
+
 public class EmailHelper {
 
     public static String getSubject(NotificationReason type){
@@ -21,17 +23,36 @@ public class EmailHelper {
         String body = "";
         switch (type){
             case SIGNUP:
-                body = "<h1>Thank You for signing up on our platform</h1> " +
-                        "<p> Enjoy using our system. </p> <br/><br/> " +
+                body = "Thank You for signing up on our platform. \n" +
+                        "Enjoy using our system. \n\n\n" +
                         "Regards";
                 break;
             case PAYMENT:
-                body = "<h1>Payment Successful</h1> " +
-                        "<p> Continue another month of usage. </p> <br/><br/> " +
+                body = "Payment Successful. \n" +
+                        "Continue another month of usage. \n\n\n" +
                         "Regards";
                 break;
         }
 
         return body;
     }
+
+    public static String getSender(){
+        return "touringpak@gmail.com";
+    }
+
+    public static String getSenderPassword(){
+        return "yuhwknwnwabgcige";
+    }
+
+    public static Properties getProperties(){
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true"); //TLS
+
+        return prop;
+    }
+
 }
